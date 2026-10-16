@@ -1,0 +1,18 @@
+{
+  "$schema": "https://static.modelcontextprotocol.io/schemas/2025-12-11/server.schema.json",
+  "name": "xyz.t0ll/toll",
+  "title": "Toll — coin checks on Robinhood Chain, Arc, BSC and Solana",
+  "description": "Coin checks on Robinhood Chain, Arc, BSC and Solana: snipers, bundles, dev records, new launches.",
+  "version": "1.0.0",
+  "websiteUrl": "https://t0ll.xyz/agents/mcp",
+  "remotes": [
+    {
+      "type": "streamable-http",
+      "url": "https://t0ll.xyz/mcp"
+    }
+  ],
+  "repository": {
+    "url": "https://github.com/SolimanFG/toll-mcp",
+    "source": "github"
+  }
+}
