@@ -3,7 +3,7 @@
   "name": "xyz.t0ll/toll",
   "title": "Toll — coin checks on Robinhood Chain, Arc, BSC and Solana",
   "description": "Coin checks on Robinhood Chain, Arc, BSC and Solana: snipers, bundles, dev records, new launches.",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "websiteUrl": "https://t0ll.xyz/agents/mcp",
   "remotes": [
     {
@@ -12,7 +12,7 @@
     }
   ],
   "repository": {
-    "url": "https://github.com/SolimanFG/toll-mcp",
+    "url": "https://github.com/t0ll-xyz/toll-mcp",
     "source": "github"
   }
 }
