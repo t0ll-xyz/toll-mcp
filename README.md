@@ -2,7 +2,7 @@
 
 # Toll MCP server
 
-Coin checks for AI agents on **Robinhood Chain, Solana, BSC and Arc**, read from the chain itself: who launched a token, who sniped it in the first seconds, which wallets moved together, the dev's record, and whether the liquidity can be pulled.
+Coin and product checks for AI agents on **Robinhood Chain, Solana and BSC**, read from the chain itself: **is there a real product behind a coin** (the LARP check), who launched it, who sniped it in the first seconds, which wallets moved together, the dev's record, and whether the liquidity can be pulled.
 
 This is a **remote MCP server**. There is nothing to install or run: point your client at
 
@@ -41,7 +41,8 @@ Clients that only speak stdio can use a bridge such as `npx mcp-remote https://t
 
 | Tool | What it answers |
 |---|---|
-| `check_coin` | One token on Robinhood Chain, Arc, BSC or Solana: where and when it launched, the dev and its record, snipers in the first 3 seconds, bundles, wallets that moved together, who holds the liquidity, and a plain tally of the findings (against / careful / clear). Leave out `chain` and Toll finds it. |
+| `check_coin` | One token on Robinhood Chain, BSC or Solana: where and when it launched, the dev and its record, snipers in the first 3 seconds, bundles, wallets that moved together, who holds the liquidity, and a plain tally of the findings (against / careful / clear). Leave out `chain` and Toll finds it. |
+| `larp_check` | Is there a real product behind a coin on Robinhood Chain or Solana? Toll reads its site, posts and code, lists each thing it claims, and checks every claim against the chain and its own working parts (app, API, MCP server, x402, extension, Telegram bot, public code). The label is product found / partly found / not found / not read: a fact about what we could check, never a verdict. |
 | `dev_record` | Every coin one wallet launched: how many, how many graduated, whether the dev sold. |
 | `wallet_privacy` | What anyone can learn about a wallet from Robinhood Chain: a privacy grade, each leak (funding, linked wallets, holdings, active hours) and tips. It measures what is visible, not whether the wallet is good or bad. |
 | `fresh_launches` | The newest coins on Robinhood Chain from Toll's live engine, with short notes on each. |
@@ -60,6 +61,7 @@ Every answer ends with a link to the full report on t0ll.xyz.
 
 - Free: 10 fresh coin checks a day per caller. A coin someone already checked recently is free to read again. Resets at 00:00 UTC.
 - Need more? Agents can pay per check with x402 at `https://t0ll.xyz/api/x402/check/<address>`.
+- The LARP check shares the same free coins; past them, `https://t0ll.xyz/api/x402/larp/<address>?chain=rh|sol` (0.05 USDG, charged only for a whole answer).
 
 ## What it is not
 
