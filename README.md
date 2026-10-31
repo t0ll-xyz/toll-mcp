@@ -60,6 +60,36 @@ Every answer ends with a link to the full report on t0ll.xyz.
 >
 > **Agent (calls `check_coin`):** $SWARM, a Robinhood Chain token launched on Pons 9 days ago, graduated. 1 against, 3 careful, 3 clear. One wallet bought 1.7% of supply in the first 3 seconds; 5 wallets bought in the same tenth of a second 54 s after launch (0.44%); no declared bundle. The dev holds 0% now…
 
+## Sell over x402: the Toll facilitator
+
+Toll runs an x402 facilitator for USDG on Robinhood Chain at **<https://x402.t0ll.xyz>**: keyless, free, no account.
+Before it settles, it checks the payTo against the seller's ERC-8004 identity
+([ERC-8478](https://github.com/ethereum/ERCs/pull/2132)), and every settlement comes back with a Toll-signed EIP-712
+receipt (who paid whom, how much, which transaction, what the payee check said).
+
+Point your x402 server at the facilitator URL and name USDG and its signing domain explicitly (most x402 libraries have
+no default for chain 4663):
+
+```json
+{
+  "scheme": "exact",
+  "network": "eip155:4663",
+  "asset": "0x5fc5360D0400a0Fd4f2af552ADD042D716F1d168",
+  "amount": "50000",
+  "payTo": "0xYourAgentWallet",
+  "maxTimeoutSeconds": 300,
+  "extra": {
+    "name": "Global Dollar",
+    "version": "1",
+    "erc8004": { "registry": "eip155:4663:0x8004A169FB4a3325136EB29fA0ceB6D2e539a432", "agentId": "<your agent id>" }
+  }
+}
+```
+
+Endpoints: `/verify`, `/settle`, `/supported`, `/stats`, `/receipt/<id or tx>`. The
+[x402 Register](https://x402.t0ll.xyz/#register) lists every agent on Robinhood Chain that sells over x402 and whether
+its payTo is bound to its identity.
+
 ## Limits
 
 - Free: 10 fresh coin checks a day per caller. A coin someone already checked recently is free to read again. Resets at 00:00 UTC.
