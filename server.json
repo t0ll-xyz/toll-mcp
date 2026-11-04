@@ -1,9 +1,9 @@
 {
   "$schema": "https://static.modelcontextprotocol.io/schemas/2025-12-11/server.schema.json",
   "name": "xyz.t0ll/toll",
-  "title": "Toll — coin and product checks on Robinhood Chain, Solana, BSC",
-  "description": "Is there a real product behind a coin? LARP checks plus bundles, snipers and dev records.",
-  "version": "1.0.2",
+  "title": "Toll — coin, agent and pre-sign checks on Robinhood Chain",
+  "description": "Robinhood Chain checks for agents: coins, LARP, devs, ERC-8004 agents, pre-sign, Stock Token data.",
+  "version": "1.0.3",
   "websiteUrl": "https://t0ll.xyz/agents/mcp",
   "remotes": [
     {
