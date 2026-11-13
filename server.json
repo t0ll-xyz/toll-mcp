@@ -3,7 +3,7 @@
   "name": "xyz.t0ll/toll",
   "title": "Toll — coin, agent and pre-sign checks on Robinhood Chain",
   "description": "Robinhood Chain checks for agents: coins, LARP, devs, agents, v4 hooks, pre-sign, Stock Tokens.",
-  "version": "1.0.4",
+  "version": "1.0.5",
   "websiteUrl": "https://t0ll.xyz/agents/mcp",
   "remotes": [
     {

@@ -68,6 +68,20 @@ Every answer ends with a link to the full report on t0ll.xyz.
 >
 > **Agent (calls `check_coin`):** $SWARM, a Robinhood Chain token launched on Pons 9 days ago, graduated. 1 against, 3 careful, 3 clear. One wallet bought 1.7% of supply in the first 3 seconds; 5 wallets bought in the same tenth of a second 54 s after launch (0.44%); no declared bundle. The dev holds 0% now…
 
+## Building on Hookr
+
+[Hookr](https://hookr.fun) is a Uniswap v4 hook builder and launchpad on Robinhood Chain. Its own MCP server (`https://hookr.fun/api/mcp`) builds unsigned calls; Toll checks each one before the wallet signs.
+
+1. **Build** the call with Hookr's MCP for your wallet: `hookr_build_swap`, `hookr_build_launch`, `hookr_build_claim`, `hookr_build_agent_link`, `hookr_build_fill`, or the liquidity builders (`hookr_build_add_liquidity`, `hookr_build_remove_liquidity`, `hookr_build_collect_fees`).
+2. **Check** it: pass what Hookr returned (`to`, `data`, `value`) to `check_tx` with `from` set to that wallet.
+3. **Sign** only on ALLOW. Pass every warning on; on BLOCK do not sign without the user's say.
+
+What `check_tx` reads of those calls: HookrRouter swaps, HookrLauncher launches (the token, the pools, who holds the liquidity, a dev buy), a launch's own withdrawal and fee collection, a pool core's claim, the Agent gate link and the order book fill. Each is named as Hookr's contract, not audited. An unknown hook, rules contract or add-on, or a payout to anyone but `from`, is a warning. Any other function of those contracts is undecoded: WARN, never ALLOW.
+
+Hookr's root hook: `check_hook` `0x89c9fb50d1f03192230ffb1c279bb6e7d3fe6acc` (its permission bits, whether its code can change, every pool on it, whether sells fail). A coin launched on Hookr, including its earlier bonding-curve launchpad, is named as a Hookr launch by `check_coin`, with its dev read from the launch's own events.
+
+Steps: https://t0ll.xyz/hooks/hookr#agents
+
 ## Sell over x402: the Toll facilitator
 
 Toll runs an x402 facilitator for USDG on Robinhood Chain at **<https://x402.t0ll.xyz>**: keyless, free, no account.
