@@ -1,4 +1,4 @@
-<p align="center"><img src="toll-icon.png" width="96" alt="Toll"></p>
+<p align="center"><img src="assets/toll-header.svg" width="100%" alt="Toll MCP: 28 tools, remote, no key"/></p>
 
 # Toll MCP server
 
